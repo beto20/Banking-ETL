@@ -2,7 +2,10 @@ from pyspark.sql import SparkSession
 from datetime import datetime
 import os
 
-spark = SparkSession.builder.master("local[1]").appName("spark-gold").getOrCreate()
+spark = SparkSession.builder \
+    .master("local") \
+    .appName("spark-gold") \
+    .getOrCreate()
 
 def get_lastest_timestamp(dir_path):
     res = []

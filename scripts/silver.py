@@ -2,8 +2,10 @@ from pyspark.sql import SparkSession
 from datetime import datetime
 from pyspark.sql.functions import expr, col, when
 
-spark = SparkSession.builder.master("local[1]").appName("spark-silver") \
-    .config("spark.jars", "../util/postgresql-42.6.0.jar") \
+spark = SparkSession.builder \
+    .master("local") \
+    .appName("spark-silver") \
+    .config("spark.jars.packages", "org.postgresql:postgresql:42.6.0") \
     .getOrCreate()
 
 # Functions
