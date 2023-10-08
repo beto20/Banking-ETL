@@ -127,10 +127,6 @@ df.createOrReplaceTempView("CREDIT_DATA")
 df_credit = spark.sql("SELECT creditLine, creditType, requestedAmount, agreedAmount, interestRate, term, quota, hasDebt, totalDebtAmount FROM CREDIT_DATA")
 # df_credit.printSchema()
 
-# Business logic
-
-
-
 
 
 dt = datetime.now()
@@ -138,4 +134,4 @@ ts_str = str(datetime.timestamp(dt))
 print("Timestamp:: ", ts_str)
 
 # Move data to gold layer
-# df.write.mode('overwrite').parquet('../silver/credit/' + ts_str)
+df.write.mode('overwrite').parquet('../silver/credit/' + ts_str)
